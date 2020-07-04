@@ -56,7 +56,7 @@ func (thesdk SdkObjects) LogEvent( chaincodeID string, id string, timestamp stri
 
 //Queries an existing key/value pair
 // chaincodeID is the name of the chaincode that is installed
-func (thesdk SdkObjects) Get(chaincodeID string, id string, timestamp string) (string , error){
+func (thesdk SdkObjects) QueryEvent(chaincodeID string, id string, timestamp string) (string , error){
 	defArgs := NewKey(id, timestamp)	// Creates composite key with id+timestamp
 	response, err := thesdk.client.Query(channel.Request{ChaincodeID: chaincodeID, Fcn: "QueryEvent", Args: defArgs})	// SDK invoke chaincode function for queries
 	if err != nil{
